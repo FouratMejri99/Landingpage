@@ -7,6 +7,7 @@ you can also check my portfolio here: [Fourat Mejri Portfolio](https://fou-portf
 
 i have used nextJs Typescript and Tailwind CSS to build this project.
 Eslint is also used in this project to maintain the code quality and consistency
+
 you can check the code quality by running the following command:
 
 ```bash
@@ -18,6 +19,21 @@ pnpm lint
 # or
 bun lint
 ```
+
+## Note
+
+i have integrated the cards components directly in some sections like features and products sections, this is because the cards components are only used in these sections and it will be easier to maintain the code and also to avoid unnecessary imports.
+
+## Features
+
+- Responsive design for optimal viewing on all devices
+- Clean and modern UI/UX design
+- Smooth animations and transitions
+- Easy navigation with a well-structured layout
+
+## Description
+
+This project is a landing page for a furniture company called "Panto Furniture". The landing page is designed to showcase the company's products and services, and to provide a seamless user experience for visitors. The page includes a hero section with a background image, a features section that highlights the key benefits of the company's products, a products section that displays the company's product offerings, a testimonials section that features customer reviews, and a footer with contact information and social media links. The design is clean and modern, with smooth animations and transitions to enhance the user experience.
 
 ## Getting Started
 
