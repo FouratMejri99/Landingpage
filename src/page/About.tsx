@@ -25,32 +25,7 @@ export default function About() {
                 className="w-full h-full object-cover"
               />
             </div>
-            {/* Card 1 - 40% visible on the right side - underlay */}
-            <div 
-              className="absolute hidden sm:block rounded-xl border-2 shadow-lg"
-              style={{
-                right: '-10%',
-                top: '30%',
-                width: '140px',
-                height: '100px',
-                backgroundColor: '#F7F7F7',
-                borderColor: '#F7F7F7',
-                zIndex: 0,
-              }}
-            />
-            {/* Card 2 - 40% visible on the top - underlay */}
-            <div 
-              className="absolute hidden sm:block rounded-xl border-2 shadow-lg"
-              style={{
-                left: '20%',
-                top: '-15%',
-                width: '120px',
-                height: '80px',
-                backgroundColor: '#F7F7F7',
-                borderColor: '#F7F7F7',
-                zIndex: 0,
-              }}
-            />
+
           </motion.div>
 
           <motion.div
@@ -120,27 +95,27 @@ export default function About() {
             {/* Mobile: simple vertical stack of 3 images */}
             <div className="flex flex-col gap-4 sm:hidden">
               <div className="rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
-                <img src="/8.jpg" alt="Interior" className="w-full h-full object-cover" />
+                <img src="/6.jpg" alt="Interior" className="w-full h-full object-cover" />
               </div>
               <div className="rounded-xl overflow-hidden shadow-lg aspect-[3/4] max-h-[280px]">
-                <img src="/1.jpg" alt="Interior" className="w-full h-full object-cover" />
+                <img src="/8.jpg" alt="Interior" className="w-full h-full object-cover" />
               </div>
               <div className="rounded-xl overflow-hidden shadow-lg aspect-[3/4] max-h-[300px]">
-                <img src="/6.jpg" alt="Furniture materials" className="w-full h-full object-cover" />
+                <img src="/1.jpg" alt="Furniture materials" className="w-full h-full object-cover" />
               </div>
             </div>
             {/* Desktop: overlapping collage */}
             <div className="hidden sm:block relative min-h-[320px] lg:min-h-[400px]">
               <div className="absolute left-0 top-0 flex flex-col gap-4 z-10">
                 <div className="rounded-2xl overflow-hidden shadow-lg w-44 sm:w-52 aspect-[4/3]">
-                  <img src="/8.jpg" alt="Interior" className="w-full h-full object-cover" />
+                  <img src="/6.jpg" alt="Interior" className="w-full h-full object-cover" />
                 </div>
                 <div className="rounded-2xl overflow-hidden shadow-lg w-44 sm:w-52 aspect-[3/4]">
                   <img src="/1.jpg" alt="Interior" className="w-full h-full object-cover" />
                 </div>
               </div>
               <div className="absolute right-0 top-1/2 -translate-y-1/2 rounded-2xl overflow-hidden shadow-lg w-56 sm:w-64 lg:w-72 aspect-[3/4] z-0">
-                <img src="/6.jpg" alt="Furniture materials" className="w-full h-full object-cover" />
+                <img src="/8.jpg" alt="Furniture materials" className="w-full h-full object-cover" />
               </div>
             </div>
           </motion.div>

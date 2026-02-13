@@ -20,7 +20,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-0">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-40 sm:pt-60">
       {/* Background Image - with priority loading */}
       <Image
         src="/bg.jpg"
@@ -39,19 +39,19 @@ export default function Hero() {
         initial={{ opacity: 0, x: -10 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        className="absolute left-[17%] top-[37%] z-10 hidden sm:block"
+        className="absolute left-[5%] xl:left-[10%] 2xl:left-[17%] top-[25%] xl:top-[30%] 2xl:top-[50%] z-10 hidden 2xl:block"
       >
-        <div className="relative flex items-center gap-2 px-3 py-2 rounded-full bg-white/20 backdrop-blur-sm shadow-lg">
+        <div className="relative flex items-center gap-1 sm:gap-1.5 md:gap-2 px-1.5 sm:px-2.5 md:px-3 py-1 sm:py-1.5 md:py-2 rounded-full bg-white/20 backdrop-blur-sm shadow-lg">
           {colorSwatches.map((swatch, i) => (
             <button
               key={i}
               type="button"
               onClick={() => setSelectedColor(i)}
-              className="w-8 h-8 rounded-full border-2 border-white/90 flex items-center justify-center transition-transform hover:scale-110"
+              className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 rounded-full border-2 border-white/90 flex items-center justify-center transition-transform hover:scale-110"
               style={{ backgroundColor: swatch.color }}
               aria-label={`Color ${swatch.label}`}
             >
-              {selectedColor === i && <Check className="w-4 h-4 text-white" strokeWidth={3} />}
+              {selectedColor === i && <Check className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 text-white" strokeWidth={3} />}
             </button>
           ))}
           {/* Pointer */}
@@ -64,14 +64,14 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.7, duration: 0.4 }}
-        className="absolute left-[19%] top-[46%] z-10 w-14 h-14 rounded-full hidden sm:flex items-center justify-center pointer-events-none"
+        className="absolute left-[60%] xl:left-[12%] 2xl:left-[19%] top-[32%] xl:top-[38%] 2xl:top-[57%] z-10 w-8 sm:w-10 md:w-12 lg:w-14 h-8 sm:h-10 md:h-12 lg:h-14 rounded-full hidden 2xl:flex items-center justify-center pointer-events-none"
         style={{
           background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.25) 50%, rgba(255,255,255,0.4))',
           boxShadow: '0 4px 20px rgba(255, 255, 255, 0.2), inset 0 1px 0 rgba(255,255,255,0.8)',
           border: '1px solid rgba(255,255,255,0.5)',
         }}
       >
-        <div className="w-3 h-3 rounded-full bg-white shadow-sm" />
+        <div className="w-1.5 sm:w-2 md:w-2.5 lg:w-3 h-1.5 sm:h-2 md:h-2.5 lg:h-3 rounded-full bg-white shadow-sm" />
       </motion.div>
 
       {/* Left Bottom Pointer - smaller decorative pointer */}
@@ -79,14 +79,14 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.9, duration: 0.5 }}
-        className="absolute z-10 hidden sm:flex items-center gap-2"
+        className="absolute z-10 hidden 2xl:flex items-center gap-2"
         style={{
           left: '8%',
-          bottom: '43%',
+          bottom: '36%',
         }}
       >
-        <div className="w-7 h-7 rounded-full border-2 border-white/60 flex items-center justify-center">
-          <div className="w-2 h-2 rounded-full bg-white" />
+        <div className="w-4 sm:w-5 md:w-6 lg:w-7 h-4 sm:h-5 md:h-6 lg:h-7 rounded-full border-2 border-white/60 flex items-center justify-center">
+          <div className="w-1 sm:w-1.5 md:w-2 h-1 sm:h-1.5 md:w-2 rounded-full bg-white" />
         </div>
       </motion.div>
 
@@ -95,17 +95,17 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.0, duration: 0.5 }}
-        className="absolute z-10 hidden lg:flex flex-col items-center gap-2"
+        className="absolute z-10 hidden 2xl:flex flex-col items-center gap-2"
         style={{
-          right: '3%',
-          top: '65%',
+          right: '2%',
+          top: '71%',
           transform: 'translateY(-50%)',
         }}
       >
 
     
-        <div className="w-8 h-8 rounded-full border-2 border-white/60 flex items-center justify-center">
-          <div className="w-2 h-2 rounded-full bg-white/50" />
+        <div className="w-5 sm:w-6 md:w-7 lg:w-8 h-5 sm:h-6 md:h-7 lg:h-8 rounded-full border-2 border-white/60 flex items-center justify-center">
+          <div className="w-1 sm:w-1.5 md:w-2 h-1 sm:h-1.5 md:w-2 rounded-full bg-white/50" />
         </div>
       </motion.div>
 
@@ -123,9 +123,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl w-full -mt-4 sm:-mt-16"
+          className="max-w-4xl w-full -mt-180 sm:-mt-180 md:-mt-180 lg:-mt-180"
         >
-          <h1 className="font-Gilroy-Bold text-white weight-400 text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-tight" style={{ fontFamily: 'Gilroy-Bold, sans-serif', letterSpacing: '-0.01em' }}>
+          <h1 className="font-Gilroy-Bold text-white font-bold text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-tight" style={{ fontFamily: 'bold, sans-serif', letterSpacing: '-0.01em' }}>
             <span className="block">Make Your Interior More</span>
             <span className="block">Minimalistic &amp; Modern</span>
           </h1>

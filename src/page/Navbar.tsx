@@ -38,7 +38,7 @@ export default function Navbar() {
       scrolled && 'bg-black/80 backdrop-blur-sm'
     )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-20 w-full">
           {/* Left - Logo */}
           <div className="flex-shrink-0">
             <Link 
@@ -75,7 +75,7 @@ export default function Navbar() {
                     )} />}
                   </Link>
                   {link.hasDropdown && activeDropdown === link.label && (
-                    <div className="absolute top-full left-0 mt-0 w-40 bg-gray-900 rounded-lg shadow-lg py-2">
+                    <div className="absolute top-full left-0 mt-0 w-40 bg-[#111827] rounded-lg shadow-lg py-2 z-50">
                       {link.dropdown?.map((item) => (
                         <Link
                           key={item}

@@ -1,8 +1,47 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Project Structure
+
+```
+panto-furniture/
+├── public/                    # Static assets
+│   ├── 1.jpg - 12.jpg       # Product images
+│   ├── bg.jpg               # Hero background
+│   ├── c1.png - c4.png      # Category images
+│   └── *.svg                # Icons and logos
+├── src/
+│   ├── app/                 # Next.js app directory
+│   │   ├── globals.css      # Global styles
+│   │   ├── layout.tsx      # Root layout
+│   │   └── page.tsx        # Home page
+│   ├── components/          # React components
+│   ├── data/               # Static data files
+│   │   ├── features.ts     # Features data
+│   │   ├── footerLinks.ts  # Footer navigation
+│   │   ├── navLinks.ts     # Navbar links
+│   │   ├── products.ts     # Products data
+│   │   └── testimonials.ts # Testimonials data
+│   ├── lib/                # Utility functions
+│   │   └── utils.ts        # Helper utilities
+│   └── page/               # Page components
+│       ├── About.tsx       # About section
+│       ├── Features.tsx    # Features section
+│       ├── Footer.tsx      # Footer component
+│       ├── Hero.tsx        # Hero section
+│       ├── Navbar.tsx      # Navigation bar
+│       ├── Products.tsx    # Products section
+│       └── Testimonials.tsx # Testimonials section
+├── eslint.config.mjs       # ESLint configuration
+├── next.config.ts          # Next.js configuration
+├── package.json            # Dependencies
+├── postcss.config.mjs     # PostCSS configuration
+├── tsconfig.json          # TypeScript configuration
+└── README.md              # Project documentation
+```
+
 ## Getting Started
 
-First, run the development server:
+First, install then run the development server:
 
 ```bash
 npm run dev
@@ -22,15 +61,6 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+This Project is made by Fourat Mejri 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+i have used nextJs and tailwing for this project

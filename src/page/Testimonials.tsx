@@ -95,7 +95,9 @@ export default function Testimonials() {
                           className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
                             i <= t.rating
                               ? 'text-[#E58411] fill-[#E58411]'
-                              : 'text-gray-200'
+                              : t.rating === 4 && i === 5
+                                ? 'text-orange-500/30'
+                                : 'text-gray-200'
                           }`}
                           strokeWidth={1.5}
                         />
