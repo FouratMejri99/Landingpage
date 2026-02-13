@@ -1,5 +1,47 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Learn More
+
+This Project is made by Fourat Mejri and you can check it live here: [Fourat Mejri Landing Page](https://landingpage-gamma-five-87.vercel.app/)
+you can also check my portfolio here: [Fourat Mejri Portfolio](https://fou-portfolio.vercel.app/)
+
+i have used nextJs Typescript and Tailwind CSS to build this project.
+Eslint is also used in this project to maintain the code quality and consistency
+you can check the code quality by running the following command:
+
+```bash
+npm run lint
+# or
+yarn lint
+# or
+pnpm lint
+# or
+bun lint
+```
+
+## Getting Started
+
+First, install then run the development server:
+
+```bash
+First, install the dependencies:
+npm install
+then run the development server:
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
 ## Project Structure
 
 ```
@@ -38,29 +80,3 @@ panto-furniture/
 ├── tsconfig.json          # TypeScript configuration
 └── README.md              # Project documentation
 ```
-
-## Getting Started
-
-First, install then run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-This Project is made by Fourat Mejri 
-
-i have used nextJs and tailwing for this project
