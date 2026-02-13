@@ -78,11 +78,11 @@ export default function Navbar() {
                     <div className="absolute top-full left-0 mt-0 w-40 bg-[#111827] rounded-lg shadow-lg py-2 z-50">
                       {link.dropdown?.map((item) => (
                         <Link
-                          key={item}
-                          href="#"
+                          key={typeof item === 'string' ? item : item.label}
+                          href={typeof item === 'string' ? '#products' : item.href}
                           className="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10"
                         >
-                          {item}
+                          {typeof item === 'string' ? item : item.label}
                         </Link>
                       ))}
                     </div>
@@ -129,12 +129,12 @@ export default function Navbar() {
                 </Link>
                 {link.hasDropdown && link.dropdown?.map((item) => (
                   <Link
-                    key={item}
-                    href="#"
+                    key={typeof item === 'string' ? item : item.label}
+                    href={typeof item === 'string' ? '#products' : item.href}
                     className="text-white/60 hover:text-white block px-6 py-2 rounded-md text-sm"
                     onClick={() => setIsOpen(false)}
                   >
-                    {item}
+                    {typeof item === 'string' ? item : item.label}
                   </Link>
                 ))}
               </div>
