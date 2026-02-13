@@ -41,7 +41,14 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Left - Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="text-3xl font-bold text-white hover:text-amber-400 transition-colors" style={{ fontFamily: 'Gilroy-Bold, sans-serif', fontSize: '28px', lineHeight: '100%', letterSpacing: '1%', textTransform: 'capitalize' }}>
+            <Link 
+              href="#hero" 
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="text-3xl font-bold text-white hover:text-amber-400 transition-colors" style={{ fontFamily: 'Gilroy-Bold, sans-serif', fontSize: '28px', lineHeight: '100%', letterSpacing: '1%', textTransform: 'capitalize' }}
+            >
               Panto
             </Link>
           </div>

@@ -25,6 +25,32 @@ export default function About() {
                 className="w-full h-full object-cover"
               />
             </div>
+            {/* Card 1 - 40% visible on the right side - underlay */}
+            <div 
+              className="absolute hidden sm:block rounded-xl border-2 shadow-lg"
+              style={{
+                right: '-10%',
+                top: '30%',
+                width: '140px',
+                height: '100px',
+                backgroundColor: '#F7F7F7',
+                borderColor: '#F7F7F7',
+                zIndex: 0,
+              }}
+            />
+            {/* Card 2 - 40% visible on the top - underlay */}
+            <div 
+              className="absolute hidden sm:block rounded-xl border-2 shadow-lg"
+              style={{
+                left: '20%',
+                top: '-15%',
+                width: '120px',
+                height: '80px',
+                backgroundColor: '#F7F7F7',
+                borderColor: '#F7F7F7',
+                zIndex: 0,
+              }}
+            />
           </motion.div>
 
           <motion.div

@@ -34,22 +34,27 @@ export default function Products() {
             Best Selling Product
           </h2>
 
-          {/* Category Pills */}
-          <div className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={cn(
-                  'px-4 py-2.5 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-colors border min-h-[44px]',
-                  activeCategory === cat
-                    ? 'bg-gray-200 text-[#1E1E1E] border-gray-200'
-                    : 'bg-white text-gray-500 border-gray-200 hover:border-gray-300'
-                )}
-              >
-                {cat}
-              </button>
-            ))}
+          {/* Category Pills with frame */}
+          <div className="mt-6 sm:mt-8 flex justify-center">
+            <div 
+              className="flex flex-wrap justify-center gap-2"
+              style={{ backgroundColor: '#EEEEEE', borderRadius: '44px', padding: '6px' }}
+            >
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={cn(
+                    'px-4 py-2.5 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-colors border min-h-[44px]',
+                    activeCategory === cat
+                      ? 'bg-white text-[#1E1E1E] border-gray-200'
+                      : 'bg-gray-200 text-gray-500 border-gray-200 hover:border-gray-300'
+                  )}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
         </motion.div>
 
@@ -136,3 +141,4 @@ export default function Products() {
     </section>
   );
 }
+

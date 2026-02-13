@@ -80,7 +80,7 @@ export default function Testimonials() {
 
                   {/* White card */}
                   <div className="absolute bottom-4 left-3 right-3 sm:bottom-6 sm:left-4 sm:right-4 rounded-xl sm:rounded-2xl bg-white shadow-xl pt-12 sm:pt-14 pb-4 sm:pb-6 px-4 sm:px-5 text-center overflow-visible">
-                    <div className="absolute -top-8 sm:-top-10 left-1/2 -translate-x-1/2 z-20 w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-white overflow-hidden shadow-lg bg-gray-100">
+                    <div className="absolute -top-8 sm:-top-10 left-1/2 -translate-x-1/2 z-20 w-16 h-16 sm:w-20 sm:h-20 rounded-full border-6 border-white overflow-hidden shadow-lg bg-gray-100">
                       <img src={t.avatar} alt={t.name} className="w-full h-full object-cover" />
                     </div>
                     <h4 className="font-bold text-[#1E1E1E] text-sm sm:text-base">{t.name}</h4>

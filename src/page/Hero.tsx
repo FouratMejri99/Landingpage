@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import Image from 'next/image';
@@ -14,8 +14,13 @@ const colorSwatches = [
 export default function Hero() {
   const [selectedColor, setSelectedColor] = useState(0);
 
+  // Scroll to top on page load/refresh
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-0">
       {/* Background Image - with priority loading */}
       <Image
         src="/bg.jpg"
@@ -24,6 +29,7 @@ export default function Hero() {
         priority
         className="object-cover"
         sizes="100vw"
+        style={{ objectPosition: 'center bottom' }}
       />
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/50" />
@@ -111,13 +117,13 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 sm:pt-24 sm:pb-16 lg:py-20 flex flex-col items-center justify-center text-center min-h-screen">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-12 sm:pt-0 sm:pb-16 lg:py-20 flex flex-col items-center justify-center text-center min-h-screen">
         {/* Content - shifted up a bit, search bar closer to text */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl w-full -mt-12 sm:-mt-16"
+          className="max-w-4xl w-full -mt-4 sm:-mt-16"
         >
           <h1 className="font-Gilroy-Bold text-white weight-400 text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-tight" style={{ fontFamily: 'Gilroy-Bold, sans-serif', letterSpacing: '-0.01em' }}>
             <span className="block">Make Your Interior More</span>
@@ -149,3 +155,4 @@ export default function Hero() {
     </section>
   );
 }
+
