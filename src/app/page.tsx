@@ -1,11 +1,11 @@
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import Features from '@/components/Features';
-import Products from '@/components/Products';
-import About from '@/components/About';
-import Testimonials from '@/components/Testimonials';
+import Navbar from '@/page/Navbar';
+import Hero from '@/page/Hero';
+import Features from '@/page/Features';
+import Products from '@/page/Products';
+import About from '@/page/About';
+import Testimonials from '@/page/Testimonials';
 
-import Footer from '@/components/Footer';
+import Footer from '@/page/Footer';
 
 export default function Home() {
   return (

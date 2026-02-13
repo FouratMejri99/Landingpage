@@ -5,15 +5,7 @@ import { motion } from 'framer-motion';
 import { Star, Plus, ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-
-const categories = ['Chair', 'Beds', 'Sofa', 'Lamp'];
-
-const products = [
-  { id: 1, name: 'Sakarias Armchair', category: 'Chair', price: 392, rating: 5, image: '/c1.png' },
-  { id: 2, name: 'Baltsar Chair', category: 'Chair', price: 299, rating: 5, image: '/c2.png' },
-  { id: 3, name: 'Anjay Chair', category: 'Chair', price: 519, rating: 5, image: '/c3.png' },
-  { id: 4, name: 'Nyantuy Chair', category: 'Chair', price: 921, rating: 5, image: '/c4.png' },
-];
+import { products, categories } from '@/data/products';
 
 export default function Products() {
   const [activeCategory, setActiveCategory] = useState('Chair');
@@ -29,7 +21,7 @@ export default function Products() {
   };
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-[#F7F7F7]">
+    <section id="products" className="py-12 sm:py-16 lg:py-20 bg-[#F7F7F7]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -38,11 +30,11 @@ export default function Products() {
           viewport={{ once: true }}
           className="text-center mb-8 sm:mb-10"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E1E1E] inline-block pb-2 border-b-2 border-[#1E1E1E]/20">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E1E1E] inline-block pb-2 ">
             Best Selling Product
           </h2>
 
-          {/* Category Pills - wrap on mobile */}
+          {/* Category Pills */}
           <div className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-2">
             {categories.map((cat) => (
               <button
@@ -63,7 +55,7 @@ export default function Products() {
 
         {/* Product area with arrows + scrollable grid */}
         <div className="relative flex items-center gap-2 sm:gap-4 mt-8 sm:mt-10">
-          {/* Left arrow - touch friendly */}
+          {/* Left arrow */}
           <button
             onClick={() => scroll('left')}
             className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-[#1E1E1E] hover:bg-gray-50 active:bg-gray-100 transition-colors z-10 min-w-[44px] min-h-[44px]"
@@ -96,8 +88,8 @@ export default function Products() {
                     />
                   </div>
                   <div className="p-4 pb-5 relative">
-                    <p className="text-sm text-gray-500 mb-1">{product.category}</p>
-                    <h3 className="font-bold text-[#1E1E1E] text-lg">{product.name}</h3>
+                    <p className="text-sm text-[#8D8D8D] mb-1">{product.category}</p>
+                    <h3 className="font-bold text-[#0D1B39] text-lg">{product.name}</h3>
                     <div className="flex items-center gap-0.5 mt-2">
                       {[...Array(product.rating)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
@@ -106,7 +98,7 @@ export default function Products() {
                     <div className="mt-3 flex items-end justify-between">
                       <span className="text-xl font-bold text-[#1E1E1E]">$ {product.price}</span>
                       <button
-                        className="w-10 h-10 min-w-[44px] min-h-[44px] rounded-full bg-[#1E1E1E] text-white flex items-center justify-center hover:bg-gray-800 active:bg-gray-700 transition-colors shadow-md -mb-1"
+                        className="w-10 h-10 min-w-[44px] min-h-[44px] rounded-full bg-[#0D1B39] text-white flex items-center justify-center hover:bg-gray-800 active:bg-gray-700 transition-colors shadow-md -mb-1"
                         aria-label="Add to cart"
                       >
                         <Plus className="w-5 h-5" strokeWidth={2.5} />

@@ -6,18 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-
-const navLinks = [
-  { 
-    label: 'Furniture', 
-    href: '#',
-    hasDropdown: true,
-    dropdown: ['Chairs', 'Tables', 'Sofas', 'Beds']
-  },
-  { label: 'Shop', href: '#' },
-  { label: 'About Us', href: '#' },
-  { label: 'Contact', href: '#' },
-];
+import { navLinks } from '@/data/navLinks';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +20,17 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <nav className={cn(
@@ -58,6 +58,7 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
+                    onClick={(e) => scrollToSection(e, link.href)}
                     className="text-white/80 hover:text-white px-3 py-2 rounded-md text-base font-medium transition-colors flex items-center gap-1"
                   >
                     {link.label}
@@ -84,7 +85,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Right - Shopping Bag + Menu (cart on all screens, menu only mobile) */}
+          {/* Right - Shopping Bag + Menu */}
           <div className="flex items-center gap-1">
             <button className="hover:text-amber-400 p-2.5 transition-colors relative min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full active:bg-white/10" aria-label="Cart">
               <FontAwesomeIcon icon={faBagShopping} className="text-white" style={{ width: '22px', height: '22px' }} />
@@ -111,8 +112,11 @@ export default function Navbar() {
               <div key={link.label}>
                 <Link
                   href={link.href}
+                  onClick={(e) => {
+                    scrollToSection(e, link.href);
+                    setIsOpen(false);
+                  }}
                   className="text-white/80 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                  onClick={() => setIsOpen(false)}
                 >
                   {link.label}
                 </Link>

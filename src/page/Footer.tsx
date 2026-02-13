@@ -1,32 +1,11 @@
 "use client";
 
 import Link from 'next/link';
-import { Facebook, Twitter, Instagram } from 'lucide-react';
-
-const servicesLinks = [
-  { label: 'Email Marketing', href: '#' },
-  { label: 'Campaigns', href: '#' },
-  { label: 'Branding', href: '#' },
-];
-
-const furnitureLinks = [
-  { label: 'Beds', href: '#' },
-  { label: 'Chair', href: '#' },
-  { label: 'All', href: '#' },
-];
-
-const socialLinks = [
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
-];
-
-const headingStyle = 'font-bold text-[#F28D3F] mb-4';
-const linkStyle = 'text-[#5C5C5C] hover:text-[#1E1E1E] transition-colors';
+import { servicesLinks, furnitureLinks, socialLinks, headingStyle, linkStyle } from '@/data/footerLinks';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#F9F9F9]">
+    <footer id="contact" className="bg-[#F9F9F9]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
           {/* Column 1: Panto + description */}

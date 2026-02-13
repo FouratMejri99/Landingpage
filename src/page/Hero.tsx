@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 
 const colorSwatches = [
-  { color: '#C4A574', label: 'Tan' },
+  { color: '#E58411;', label: 'Tan' },
   { color: '#2DD4BF', label: 'Teal' },
   { color: '#6B7280', label: 'Grey' },
 ];
@@ -28,15 +28,15 @@ export default function Hero() {
         initial={{ opacity: 0, x: -10 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        className="absolute left-[8%] top-[32%] z-10 hidden sm:block"
+        className="absolute left-[17%] top-[37%] z-10 hidden sm:block"
       >
-        <div className="relative flex items-center gap-2 px-3 py-2 rounded-full bg-gray-900/70 backdrop-blur-sm shadow-lg">
+        <div className="relative flex items-center gap-2 px-3 py-2 rounded-full bg-white/20 backdrop-blur-sm shadow-lg">
           {colorSwatches.map((swatch, i) => (
             <button
               key={i}
               type="button"
               onClick={() => setSelectedColor(i)}
-              className="w-8 h-8 rounded-full border-2 border-white/30 flex items-center justify-center transition-transform hover:scale-110"
+              className="w-8 h-8 rounded-full border-2 border-white/90 flex items-center justify-center transition-transform hover:scale-110"
               style={{ backgroundColor: swatch.color }}
               aria-label={`Color ${swatch.label}`}
             >
@@ -44,7 +44,7 @@ export default function Hero() {
             </button>
           ))}
           {/* Pointer */}
-          <div className="absolute left-1/2 -translate-x-1/2 -bottom-1.5 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[8px] border-l-transparent border-r-transparent border-t-gray-900/70" />
+          <div className="absolute left-1/2 -translate-x-1/2 -bottom-1.5 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[8px] border-l-transparent border-r-transparent border-t-white/20" />
         </div>
       </motion.div>
 
@@ -53,21 +53,56 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.7, duration: 0.4 }}
-        className="absolute left-[10%] top-[42%] z-10 w-14 h-14 rounded-full hidden sm:flex items-center justify-center pointer-events-none"
+        className="absolute left-[19%] top-[46%] z-10 w-14 h-14 rounded-full hidden sm:flex items-center justify-center pointer-events-none"
         style={{
           background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.25) 50%, rgba(255,255,255,0.4))',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.8)',
+          boxShadow: '0 4px 20px rgba(255, 255, 255, 0.2), inset 0 1px 0 rgba(255,255,255,0.8)',
           border: '1px solid rgba(255,255,255,0.5)',
         }}
       >
-        <div className="w-2 h-2 rounded-full bg-white shadow-sm" />
+        <div className="w-3 h-3 rounded-full bg-white shadow-sm" />
+      </motion.div>
+
+      {/* Left Bottom Pointer - smaller decorative pointer */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.9, duration: 0.5 }}
+        className="absolute z-10 hidden sm:flex items-center gap-2"
+        style={{
+          left: '8%',
+          bottom: '43%',
+        }}
+      >
+        <div className="w-7 h-7 rounded-full border-2 border-white/60 flex items-center justify-center">
+          <div className="w-2 h-2 rounded-full bg-white" />
+        </div>
+      </motion.div>
+
+      {/* Right Pointer - smaller decorative pointer */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.0, duration: 0.5 }}
+        className="absolute z-10 hidden lg:flex flex-col items-center gap-2"
+        style={{
+          right: '3%',
+          top: '65%',
+          transform: 'translateY(-50%)',
+        }}
+      >
+
+    
+        <div className="w-8 h-8 rounded-full border-2 border-white/60 flex items-center justify-center">
+          <div className="w-2 h-2 rounded-full bg-white/50" />
+        </div>
       </motion.div>
 
       {/* Bottom fade into Features (gray-50) */}
       <div
         className="absolute bottom-0 left-0 right-0 h-[35%] min-h-[280px] pointer-events-none"
         style={{
-          background: 'linear-gradient(to bottom, transparent 0%, rgba(249, 250, 251, 0.3) 40%, rgb(249, 250, 251) 100%)',
+          background: 'linear-gradient(to bottom, transparent 0%, rgba(249, 250, 251, 0.3) 70%, rgb(249, 250, 251) 100%)',
         }}
       />
 
@@ -79,11 +114,11 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl w-full -mt-12 sm:-mt-16"
         >
-          <h1 className="font-bold text-white text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-tight" style={{ fontFamily: 'Gilroy-Bold, sans-serif', letterSpacing: '-0.01em' }}>
-            <span className="block">Make your interior more</span>
-            <span className="block">minimalistic &amp; modern</span>
+          <h1 className="font-Gilroy-Bold text-white weight-400 text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-tight" style={{ fontFamily: 'Gilroy-Bold, sans-serif', letterSpacing: '-0.01em' }}>
+            <span className="block">Make Your Interior More</span>
+            <span className="block">Minimalistic &amp; Modern</span>
           </h1>
-          <p className="text-white mt-4 text-base sm:text-lg md:text-xl" style={{ fontFamily: 'Gilroy-Regular, sans-serif', lineHeight: '160%', textAlign: 'center', opacity: 0.9 }}>
+          <p className="font-Gilroy-Regular text-white mt-4 text-base sm:text-lg md:text-xl" style={{ fontFamily: 'Gilroy-Regular, sans-serif', lineHeight: '160%', textAlign: 'center', opacity: 0.9 }}>
             <span className="block">Turn your room with panto into a lot more minimalist</span>
             <span className="block">and modern with ease and speed</span>
           </p>
