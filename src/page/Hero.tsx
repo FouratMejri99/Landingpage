@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
+import Image from 'next/image';
 
 const colorSwatches = [
   { color: '#E58411;', label: 'Tan' },
@@ -15,10 +16,14 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image - show more of the bottom */}
-      <div 
-        className="absolute inset-0 bg-cover bg-no-repeat"
-        style={{ backgroundImage: 'url(/bg.jpg)', backgroundPosition: 'center bottom' }}
+      {/* Background Image - with priority loading */}
+      <Image
+        src="/bg.jpg"
+        alt="Background"
+        fill
+        priority
+        className="object-cover"
+        sizes="100vw"
       />
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/50" />
