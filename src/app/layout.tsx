@@ -17,6 +17,12 @@ export const metadata: Metadata = {
   description: "Discover the best furniture for your home. Shop modern chairs, tables, sofas, and lamps at Panto.",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{

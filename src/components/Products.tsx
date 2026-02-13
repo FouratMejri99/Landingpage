@@ -1,188 +1,145 @@
 "use client";
 
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Star, ShoppingCart, Heart } from 'lucide-react';
+import { Star, Plus, ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
+
+const categories = ['Chair', 'Beds', 'Sofa', 'Lamp'];
 
 const products = [
-  {
-    id: 1,
-    name: 'Modern Lounge Chair',
-    price: 299,
-    originalPrice: 399,
-    rating: 4.8,
-    reviews: 124,
-    category: 'Chairs',
-    image: 'bg-amber-200',
-  },
-  {
-    id: 2,
-    name: 'Wooden Coffee Table',
-    price: 189,
-    originalPrice: 249,
-    rating: 4.9,
-    reviews: 89,
-    category: 'Tables',
-    image: 'bg-amber-300',
-  },
-  {
-    id: 3,
-    name: 'Velvet Sofa Set',
-    price: 899,
-    originalPrice: 1199,
-    rating: 4.7,
-    reviews: 203,
-    category: 'Sofas',
-    image: 'bg-amber-400',
-  },
-  {
-    id: 4,
-    name: 'Minimalist Lamp',
-    price: 79,
-    originalPrice: 99,
-    rating: 4.6,
-    reviews: 67,
-    category: 'Lamps',
-    image: 'bg-amber-100',
-  },
-  {
-    id: 5,
-    name: 'Dining Chair Set',
-    price: 449,
-    originalPrice: 599,
-    rating: 4.8,
-    reviews: 156,
-    category: 'Chairs',
-    image: 'bg-amber-500',
-  },
-  {
-    id: 6,
-    name: 'Bookshelf Unit',
-    price: 349,
-    originalPrice: 449,
-    rating: 4.7,
-    reviews: 98,
-    category: 'Storage',
-    image: 'bg-amber-600',
-  },
+  { id: 1, name: 'Sakarias Armchair', category: 'Chair', price: 392, rating: 5, image: '/c1.png' },
+  { id: 2, name: 'Baltsar Chair', category: 'Chair', price: 299, rating: 5, image: '/c2.png' },
+  { id: 3, name: 'Anjay Chair', category: 'Chair', price: 519, rating: 5, image: '/c3.png' },
+  { id: 4, name: 'Nyantuy Chair', category: 'Chair', price: 921, rating: 5, image: '/c4.png' },
 ];
 
 export default function Products() {
+  const [activeCategory, setActiveCategory] = useState('Chair');
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (!scrollRef.current) return;
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+    const cardWidth = isMobile ? 240 : 268;
+    const gap = isMobile ? 16 : 24;
+    const step = cardWidth + gap;
+    scrollRef.current.scrollBy({ left: direction === 'left' ? -step : step, behavior: 'smooth' });
+  };
+
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-12 sm:py-16 lg:py-20 bg-[#F7F7F7]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-10"
         >
-          <span className="text-amber-600 font-medium text-sm uppercase tracking-wider">
-            Our Products
-          </span>
-          <h2 className="mt-2 text-4xl font-bold text-gray-900">
-            Popular Furniture
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E1E1E] inline-block pb-2 border-b-2 border-[#1E1E1E]/20">
+            Best Selling Product
           </h2>
-          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-            Explore our most loved furniture pieces, chosen by thousands of happy customers.
-          </p>
-        </motion.div>
 
-        {/* Category Tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
-        >
-          {['All', 'Chairs', 'Tables', 'Sofas', 'Lamps', 'Storage'].map((category, index) => (
-            <button
-              key={category}
-              className={cn(
-                'px-6 py-2 rounded-full font-medium transition-colors',
-                index === 0
-                  ? 'bg-amber-600 text-white'
-                  : 'bg-white text-gray-700 hover:bg-amber-100 hover:text-amber-600'
-              )}
-            >
-              {category}
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow group"
-            >
-              {/* Image */}
-              <div className={cn('aspect-square relative', product.image)}>
-                <div className="absolute inset-0 flex items-center justify-center text-amber-800 font-medium">
-                  {product.name} Image
-                </div>
-                {/* Quick Actions */}
-                <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button className="p-2 bg-white rounded-full shadow-md hover:bg-amber-600 hover:text-white transition-colors">
-                    <Heart size={20} />
-                  </button>
-                  <button className="p-2 bg-white rounded-full shadow-md hover:bg-amber-600 hover:text-white transition-colors">
-                    <ShoppingCart size={20} />
-                  </button>
-                </div>
-                {/* Sale Badge */}
-                {product.originalPrice > product.price && (
-                  <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                    Sale
-                  </div>
+          {/* Category Pills - wrap on mobile */}
+          <div className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={cn(
+                  'px-4 py-2.5 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-colors border min-h-[44px]',
+                  activeCategory === cat
+                    ? 'bg-gray-200 text-[#1E1E1E] border-gray-200'
+                    : 'bg-white text-gray-500 border-gray-200 hover:border-gray-300'
                 )}
-              </div>
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </motion.div>
 
-              {/* Content */}
-              <div className="p-6">
-                <p className="text-sm text-amber-600 font-medium">{product.category}</p>
-                <h3 className="text-lg font-semibold text-gray-900 mt-1">{product.name}</h3>
-                
-                {/* Rating */}
-                <div className="flex items-center gap-2 mt-2">
-                  <div className="flex items-center">
-                    <Star className="text-yellow-400 fill-current" size={16} />
-                    <span className="ml-1 text-sm font-medium">{product.rating}</span>
+        {/* Product area with arrows + scrollable grid */}
+        <div className="relative flex items-center gap-2 sm:gap-4 mt-8 sm:mt-10">
+          {/* Left arrow - touch friendly */}
+          <button
+            onClick={() => scroll('left')}
+            className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-[#1E1E1E] hover:bg-gray-50 active:bg-gray-100 transition-colors z-10 min-w-[44px] min-h-[44px]"
+            aria-label="Previous products"
+          >
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2} />
+          </button>
+
+          {/* Scrollable product grid */}
+          <div
+            ref={scrollRef}
+            className="flex-1 min-w-0 overflow-x-auto overflow-y-hidden scroll-smooth scrollbar-hide flex gap-4 sm:gap-6 pb-4 snap-x snap-mandatory"
+          >
+            {products.map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="flex-shrink-0 w-[240px] sm:w-[268px] snap-center"
+              >
+                <div className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                  {/* Product image */}
+                  <div className="w-full aspect-[268/280] bg-[#FAFAFA] flex items-center justify-center p-4">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
-                  <span className="text-gray-400 text-sm">({product.reviews} reviews)</span>
+                  <div className="p-4 pb-5 relative">
+                    <p className="text-sm text-gray-500 mb-1">{product.category}</p>
+                    <h3 className="font-bold text-[#1E1E1E] text-lg">{product.name}</h3>
+                    <div className="flex items-center gap-0.5 mt-2">
+                      {[...Array(product.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
+                      ))}
+                    </div>
+                    <div className="mt-3 flex items-end justify-between">
+                      <span className="text-xl font-bold text-[#1E1E1E]">$ {product.price}</span>
+                      <button
+                        className="w-10 h-10 min-w-[44px] min-h-[44px] rounded-full bg-[#1E1E1E] text-white flex items-center justify-center hover:bg-gray-800 active:bg-gray-700 transition-colors shadow-md -mb-1"
+                        aria-label="Add to cart"
+                      >
+                        <Plus className="w-5 h-5" strokeWidth={2.5} />
+                      </button>
+                    </div>
+                  </div>
                 </div>
+              </motion.div>
+            ))}
+          </div>
 
-                {/* Price */}
-                <div className="flex items-center gap-3 mt-3">
-                  <span className="text-2xl font-bold text-gray-900">${product.price}</span>
-                  {product.originalPrice > product.price && (
-                    <span className="text-lg text-gray-400 line-through">${product.originalPrice}</span>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          {/* Right arrow */}
+          <button
+            onClick={() => scroll('right')}
+            className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-[#1E1E1E] hover:bg-gray-50 active:bg-gray-100 transition-colors z-10 min-w-[44px] min-h-[44px]"
+            aria-label="Next products"
+          >
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2} />
+          </button>
         </div>
 
-        {/* View All Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="text-center mt-12"
-        >
-          <button className="px-8 py-4 bg-white border-2 border-amber-600 text-amber-600 font-semibold rounded-lg hover:bg-amber-600 hover:text-white transition-colors">
-            View All Products
-          </button>
-        </motion.div>
+        {/* View All link */}
+        <div className="text-center mt-10">
+          <Link
+            href="#"
+            className="text-[#E58411] font-medium hover:text-[#c9710e] transition-colors inline-flex items-center gap-1"
+          >
+            View All
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
+        </div>
       </div>
     </section>
   );

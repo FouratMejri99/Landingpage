@@ -1,95 +1,175 @@
 "use client";
 
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Star, Quote } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const testimonials = [
   {
     id: 1,
-    name: 'Sarah Johnson',
-    role: 'Interior Designer',
-    content: 'Panto furniture has completely transformed how I approach my design projects. The quality and attention to detail are unmatched in the industry.',
+    name: 'Bang Upin',
+    role: 'Pedagang Asongan',
+    content: 'Terimakasih banyak, kini ruanganku menjadi lebih mewah dan terlihat mahal',
     rating: 5,
-    avatar: 'bg-amber-200',
+    image: '/3.jpg',
+    avatar: '/7.png',
   },
   {
     id: 2,
-    name: 'Michael Chen',
-    role: 'Home Owner',
-    content: 'We purchased our entire living room set from Panto and couldn\'t be happier. The delivery was fast and the assembly was a breeze.',
-    rating: 5,
-    avatar: 'bg-amber-300',
+    name: 'Ibuk Sukijan',
+    role: 'Ibu Rumah Tangga',
+    content: 'Makasih Panto, aku sekarang berasa tinggal di apartment karena barang-barang yang terlihat mewah',
+    rating: 3,
+    image: '/5.jpg',
+    avatar: '/10.png',
   },
   {
     id: 3,
-    name: 'Emily Rodriguez',
-    role: 'Architect',
-    content: 'As an architect, I\'m very particular about furniture. Panto consistently delivers pieces that are both functional and aesthetically pleasing.',
+    name: 'Mpok Ina',
+    role: 'Karyawan Swasta',
+    content: 'Sangat terjangkau untuk kantong saya yang tidak terlalu banyak',
+    rating: 3,
+    image: '/9.jpg',
+    avatar: '/12.png',
+  },
+  {
+    id: 4,
+    name: 'Bapak Surya',
+    role: 'Wiraswasta',
+    content: 'Kualitas furniture Panto sangat baik, rumah saya terlihat lebih elegan.',
     rating: 5,
-    avatar: 'bg-amber-400',
+    image: '/2.jpg',
+    avatar: '/7.png',
+  },
+  {
+    id: 5,
+    name: 'Ibu Dewi',
+    role: 'Guru',
+    content: 'Pelayanan ramah dan barang sampai dengan aman. Sangat recommended!',
+    rating: 5,
+    image: '/6.jpg',
+    avatar: '/10.png',
+  },
+  {
+    id: 6,
+    name: 'Mas Andi',
+    role: 'Karyawan',
+    content: 'Desain minimalis dan harga bersahabat. Ruang tamu saya sekarang jauh lebih nyaman.',
+    rating: 4,
+    image: '/8.jpg',
+    avatar: '/12.png',
   },
 ];
 
 export default function Testimonials() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const cardsToShow = 3;
+  const maxIndex = Math.max(0, testimonials.length - cardsToShow);
+
+  const scroll = (direction: 'left' | 'right') => {
+    const next = direction === 'left'
+      ? Math.max(0, currentIndex - 1)
+      : Math.min(maxIndex, currentIndex + 1);
+    setCurrentIndex(next);
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+    const cardWidth = isMobile ? 280 : 320;
+    const gap = isMobile ? 16 : 24;
+    scrollRef.current?.scrollTo({
+      left: next * (cardWidth + gap),
+      behavior: 'smooth',
+    });
+  };
+
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-12 sm:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <span className="text-amber-600 font-medium text-sm uppercase tracking-wider">
-            Testimonials
-          </span>
-          <h2 className="mt-2 text-4xl font-bold text-gray-900">
-            What Our Customers Say
-          </h2>
-          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what our satisfied customers have to say about their Panto experience.
+          <p className="text-[#E58411] font-medium text-xs sm:text-sm uppercase tracking-wider">
+            TESTIMONIALS
           </p>
+          <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E1E1E]">
+            Our Client Reviews
+          </h2>
         </motion.div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow relative"
-            >
-              {/* Quote Icon */}
-              <Quote className="absolute top-6 right-6 text-amber-200" size={40} />
-              
-              {/* Rating */}
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="text-yellow-400 fill-current" size={20} />
-                ))}
-              </div>
+        {/* Carousel */}
+        <div className="relative flex items-center gap-2 sm:gap-4">
+          <button
+            onClick={() => scroll('left')}
+            className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 shadow-md flex items-center justify-center text-[#1E1E1E] hover:bg-gray-50 active:bg-gray-100 transition-colors z-10 min-w-[44px] min-h-[44px]"
+            aria-label="Previous testimonials"
+          >
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2} />
+          </button>
 
-              {/* Content */}
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                "{testimonial.content}"
-              </p>
+          <div
+            ref={scrollRef}
+            className="flex-1 min-w-0 overflow-x-auto overflow-y-hidden scroll-smooth scrollbar-hide flex gap-4 sm:gap-6 pb-4 snap-x snap-mandatory"
+            style={{ scrollSnapType: 'x mandatory' }}
+          >
+            {testimonials.map((t) => (
+              <motion.div
+                key={t.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex-shrink-0 w-[280px] sm:w-[320px] snap-center"
+              >
+                {/* Card: background with white card overlay */}
+                <div className="relative h-[380px] sm:h-[420px] rounded-xl sm:rounded-2xl overflow-hidden">
+                  {/* Background image - no blur */}
+                  <div className="absolute inset-0">
+                    <img
+                      src={t.image}
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/20" />
+                  </div>
 
-              {/* Author */}
-              <div className="flex items-center gap-4">
-                <div className={`w-12 h-12 rounded-full ${testimonial.avatar} flex items-center justify-center`}>
-                  <span className="text-amber-800 font-medium">{testimonial.name.charAt(0)}</span>
+                  {/* White card */}
+                  <div className="absolute bottom-4 left-3 right-3 sm:bottom-6 sm:left-4 sm:right-4 rounded-xl sm:rounded-2xl bg-white shadow-xl pt-12 sm:pt-14 pb-4 sm:pb-6 px-4 sm:px-5 text-center overflow-visible">
+                    <div className="absolute -top-8 sm:-top-10 left-1/2 -translate-x-1/2 z-20 w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-white overflow-hidden shadow-lg bg-gray-100">
+                      <img src={t.avatar} alt={t.name} className="w-full h-full object-cover" />
+                    </div>
+                    <h4 className="font-bold text-[#1E1E1E] text-sm sm:text-base">{t.name}</h4>
+                    <p className="text-xs sm:text-sm text-gray-500 mt-0.5 sm:mt-1">{t.role}</p>
+                    <p className="mt-2 sm:mt-3 text-[#1E1E1E] text-xs sm:text-sm leading-relaxed line-clamp-4">
+                      &ldquo;{t.content}&rdquo;
+                    </p>
+                    <div className="flex justify-center gap-0.5 mt-3 sm:mt-4">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <Star
+                          key={i}
+                          className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
+                            i <= t.rating
+                              ? 'text-[#E58411] fill-[#E58411]'
+                              : 'text-gray-200'
+                          }`}
+                          strokeWidth={1.5}
+                        />
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                  <p className="text-sm text-gray-500">{testimonial.role}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
+
+          <button
+            onClick={() => scroll('right')}
+            className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 shadow-md flex items-center justify-center text-[#1E1E1E] hover:bg-gray-50 active:bg-gray-100 transition-colors z-10 min-w-[44px] min-h-[44px]"
+            aria-label="Next testimonials"
+          >
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2} />
+          </button>
         </div>
       </div>
     </section>
